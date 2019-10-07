@@ -4,5 +4,38 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_1_tutorial.unity
+    guid: 97df2c153ade9ff4e8b0006620bed896
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_2.unity
+    guid: c9a0ac034bbb97548af533997526afe4
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_3.unity
+    guid: 58c7b72f72609e148b10ba2fc632548a
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_4.unity
+    guid: 3f03357e25bc0614182eb818c214bc2c
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_5.unity
+    guid: 7ee1df6b8a7813740b19eafe5009aa41
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_6.unity
+    guid: 84f171a2a197f1a44bc0a137e8a68bc1
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_pbr_spheres.unity
+    guid: 0a62ac6bbfcf6df46a069ed68c7f222d
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_pbr_roundblock.unity
+    guid: d9438dbce85190441b5741aefd07973c
+  - enabled: 0
+    path: Assets/JellyCube/Levels/level_sokoban.unity
+    guid: 78f71f593aa42cb498be1ef89272d84d
+  - enabled: 0
+    path: Assets/JellyCube/Levels/cube_behaviours.unity
+    guid: 44e15ff50f26cc243b7068b1a3f4cf7e
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: d4e80c3a692331440bf878ecd62d03fe
   m_configObjects: {}
