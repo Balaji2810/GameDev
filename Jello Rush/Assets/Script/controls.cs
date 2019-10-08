@@ -78,7 +78,7 @@ public class controls : MonoBehaviour
                     // Determine direction by comparing the current touch position with the initial one.
                     case TouchPhase.Moved:
                         tx=touch.position.x-x;
-                        movepercent=50*(tx/Screen.width);
+                        movepercent=30*(tx/Screen.width);
                         //rb.transform.position.x=(movepercent*20)+objx;
                         transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
 

@@ -70,6 +70,7 @@
      <Compile Include="Assets\Script\moveObject.cs" />
      <Compile Include="Assets\Script\Score.cs" />
      <Compile Include="Assets\Script\SmartCube.cs" />
+     <Compile Include="Assets\Script\SmartJumpCube.cs" />
      <Compile Include="Assets\Script\Spawner.cs" />
      <Compile Include="Assets\Script\Swipe.cs" />
      <None Include="Assets\JellyCube\Art\Fonts\LICENSE-2.0.txt" />

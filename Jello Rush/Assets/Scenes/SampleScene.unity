@@ -1237,6 +1237,8 @@ MonoBehaviour:
     type: 3}
   smartcube: {fileID: 6022002954642935901, guid: fbcfc9908fb2a1b47aa185b88f0ac345,
     type: 3}
+  smartjumpcube: {fileID: 8653978162859539629, guid: 333692c974d9bfa4fba2a39b33269917,
+    type: 3}
   TimeBetweenWaves: 1
   Time2Spawn: 2
   doSpawn: {fileID: 934993996}
