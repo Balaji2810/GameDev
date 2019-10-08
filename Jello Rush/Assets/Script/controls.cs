@@ -11,7 +11,7 @@ public class controls : MonoBehaviour
     private float moveSpeed = 10f;
     private float x,objx,tx,movepercent;
     private Vector2 startTouchPosition, endTouchPosition;
-    private float jumpForce = 7000f;
+    private float jumpForce = 70f;
 	private bool jumpAllowed = false;
     public Transform player;
     public Swipe swipeControl;
@@ -48,8 +48,8 @@ public class controls : MonoBehaviour
 
             if(jumpRot==1 && transform.position.y>2)
             {
-                transform.Rotate(0,20,0);
-                print(transform.position.y);
+                transform.Rotate(0,700*Time.deltaTime,0);
+                //print(transform.position.y);
                 
                 //transform.position=new Vector3(transform.position.x,transform.position.y-0.03f,transform.position.z);
             }
@@ -78,7 +78,7 @@ public class controls : MonoBehaviour
                     // Determine direction by comparing the current touch position with the initial one.
                     case TouchPhase.Moved:
                         tx=touch.position.x-x;
-                        movepercent=30*(tx/Screen.width);
+                        movepercent=50*(tx/Screen.width);
                         //rb.transform.position.x=(movepercent*20)+objx;
                         transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
 
@@ -177,98 +177,111 @@ public class controls : MonoBehaviour
     void endGame()
     {
         spawner=false;
-        Destroy(EndGame);
+        
         GameObject egobj;
-        float blastForce=850f;
+        float blastForce=15f;
         float x,y,z;
         Vector3 v;
+        Destroy(EndGame);
 
         //z-1 axis
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x-(1f/2),transform.position.y-(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x+(1f/2),transform.position.y-(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x+(1f/2),transform.position.y+(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
         
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x-(1f/2),transform.position.y+(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
         
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x+(1f/2),transform.position.y,transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x-(1f/2),transform.position.y,transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
 
         //z+1 axis
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x-(1f/2),transform.position.y-(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x+(1f/2),transform.position.y-(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x+(1f/2),transform.position.y+(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
         
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x-(1f/2),transform.position.y+(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
         
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x+(1f/2),transform.position.y,transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
-        x=Random.Range(-2,2);
-        y=Random.Range(-2,2);
-        z=Random.Range(-2,2);
+        x=Random.Range(-0.5f,0.5f);
+        y=Random.Range(0.1f,0.5f);
+        z=Random.Range(-2f,2f);
         v= new Vector3(transform.position.x-(1f/2),transform.position.y,transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
-        egobj.GetComponent<Rigidbody>().AddRelativeForce(x*blastForce,y*blastForce,z*blastForce);
+        egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
+        print(x+" "+y+" "+z);
 
         
 

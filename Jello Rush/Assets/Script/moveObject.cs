@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class moveFullCuboid : MonoBehaviour
+public class moveObject : MonoBehaviour
 {
-   private float moveSpeed = 50f;
+    private float moveSpeed = 50f;
     public GameObject go;
     //public controls stopMove;
     // Start is called before the first frame update

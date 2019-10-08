@@ -53,10 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BigBlock.cs" />
-     <Compile Include="Assets\camera_move.cs" />
-     <Compile Include="Assets\controls.cs" />
-     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\JellyCube\Scripts\CameraController.cs" />
      <Compile Include="Assets\JellyCube\Scripts\CheckPoint.cs" />
      <Compile Include="Assets\JellyCube\Scripts\CubeController.cs" />
@@ -67,11 +63,15 @@
      <Compile Include="Assets\JellyCube\Scripts\RubberEffect.cs" />
      <Compile Include="Assets\JellyCube\Scripts\Sound.cs" />
      <Compile Include="Assets\JellyCube\Scripts\Tweener.cs" />
-     <Compile Include="Assets\moveFullCuboid.cs" />
-     <Compile Include="Assets\moveSimpleCube.cs" />
-     <Compile Include="Assets\Score.cs" />
-     <Compile Include="Assets\Spawner.cs" />
-     <Compile Include="Assets\Swipe.cs" />
+     <Compile Include="Assets\Script\BigBlock.cs" />
+     <Compile Include="Assets\Script\camera_move.cs" />
+     <Compile Include="Assets\Script\controls.cs" />
+     <Compile Include="Assets\Script\GameManager.cs" />
+     <Compile Include="Assets\Script\moveObject.cs" />
+     <Compile Include="Assets\Script\Score.cs" />
+     <Compile Include="Assets\Script\SmartCube.cs" />
+     <Compile Include="Assets\Script\Spawner.cs" />
+     <Compile Include="Assets\Script\Swipe.cs" />
      <None Include="Assets\JellyCube\Art\Fonts\LICENSE-2.0.txt" />
      <None Include="Assets\JellyCube\changelist.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">

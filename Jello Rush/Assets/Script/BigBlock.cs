@@ -30,6 +30,11 @@ public class BigBlock : MonoBehaviour
             score.addScore(2);
             //print(colInfo.collider.name);
         }
+        else if(colInfo.collider.name=="SmartCube(Clone)" && StopScore.Spawner )
+        {
+            score.addScore(3);
+            //print(colInfo.collider.name);
+        }
 
         
     }
