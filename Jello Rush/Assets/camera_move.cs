@@ -6,10 +6,15 @@ public class camera_move : MonoBehaviour
 {
    public Transform player;
    public Vector3 offset;
+   public controls StopCamera;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position=player.position+offset;
+        if(StopCamera.Spawner)
+        {
+            transform.position=new Vector3(player.position.x+offset.x,transform.position.y,player.position.z+offset.z);//player.position+offset;
+        }
+        
     }
 }

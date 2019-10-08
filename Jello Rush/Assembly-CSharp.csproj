@@ -67,6 +67,7 @@
      <Compile Include="Assets\JellyCube\Scripts\RubberEffect.cs" />
      <Compile Include="Assets\JellyCube\Scripts\Sound.cs" />
      <Compile Include="Assets\JellyCube\Scripts\Tweener.cs" />
+     <Compile Include="Assets\moveFullCuboid.cs" />
      <Compile Include="Assets\moveSimpleCube.cs" />
      <Compile Include="Assets\Score.cs" />
      <Compile Include="Assets\Spawner.cs" />

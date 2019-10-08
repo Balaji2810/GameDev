@@ -490,6 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 934994001}
   offset: {x: 0, y: 5, z: -17}
+  StopCamera: {fileID: 934993996}
 --- !u!1 &574362604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,26 @@ PrefabInstance:
       propertyPath: m_MotionVectors
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11483196, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
+      propertyPath: m_Damping
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483196, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
+      propertyPath: m_Presets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483196, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
+      propertyPath: m_EffectIntensity
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483196, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
+      propertyPath: m_Stiffness
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11483196, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
 --- !u!1 &1851839072
@@ -1207,6 +1228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleCube: {fileID: 9030153348213242503, guid: ab13d53447f661748bf9800720f32fa7,
+    type: 3}
+  fullCuboid: {fileID: 2073593806586785901, guid: 51e01e0760d0ae74b8721e83bf224b67,
     type: 3}
   TimeBetweenWaves: 1
   Time2Spawn: 2

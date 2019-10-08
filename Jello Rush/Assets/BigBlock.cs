@@ -25,6 +25,12 @@ public class BigBlock : MonoBehaviour
             score.addScore(1);
             //print(colInfo.collider.name);
         }
+        else if(colInfo.collider.name=="FullCuboid(Clone)" && StopScore.Spawner )
+        {
+            score.addScore(2);
+            //print(colInfo.collider.name);
+        }
+
         
     }
 }

@@ -36,7 +36,7 @@ public class controls : MonoBehaviour
             if(swipeControl.SwipeUp && jumps>0)
             {
                 
-                rb.velocity=new Vector3(0,1,0)*70*(moveSpeed*0.016f);//Time.deltaTime;
+                rb.velocity=new Vector3(0,1,0)*120*(moveSpeed*0.016f);//Time.deltaTime;
                 //rb.AddForce(0,50*moveSpeed*Time.deltaTime,0,ForceMode.VelocityChange);
                 jumps--;
                 jumpRot=1;
@@ -56,7 +56,7 @@ public class controls : MonoBehaviour
 
             if(jumpRot==1 && transform.position.y>7.9f)
             {
-                rb.velocity=new Vector3(0,-1,0)*40*(moveSpeed*0.016f);
+                rb.velocity=new Vector3(0,-1,0)*100*(moveSpeed*0.016f);
             }
             
             //move left right
@@ -78,7 +78,7 @@ public class controls : MonoBehaviour
                     // Determine direction by comparing the current touch position with the initial one.
                     case TouchPhase.Moved:
                         tx=touch.position.x-x;
-                        movepercent=20*(tx/Screen.width);
+                        movepercent=30*(tx/Screen.width);
                         //rb.transform.position.x=(movepercent*20)+objx;
                         transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
 
@@ -96,13 +96,15 @@ public class controls : MonoBehaviour
             //move left right
             if(Input.GetKey("d"))
             {
-                rb.velocity=new Vector3(1,0,0)*50*moveSpeed*Time.deltaTime;
+                //rb.velocity=new Vector3(1,0,0)*80*moveSpeed*Time.deltaTime;
+                transform.position=new Vector3(transform.position.x+(15f*Time.deltaTime),transform.position.y,transform.position.z);
 
             }
 
             if(Input.GetKey("a"))
-            {   rb.velocity=new Vector3(-1,0,0)*50*moveSpeed*Time.deltaTime;
+            {   //rb.velocity=new Vector3(-1,0,0)*80*moveSpeed*Time.deltaTime;
                 //rb.AddForce(-moveSpeed*Time.deltaTime,0,0,ForceMode.VelocityChange);
+                transform.position=new Vector3(transform.position.x-(15f*Time.deltaTime),transform.position.y,transform.position.z);
             }
 
             // SwipeCheck ();	

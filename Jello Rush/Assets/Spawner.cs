@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject simpleCube;
+    public GameObject simpleCube,fullCuboid;
     public float TimeBetweenWaves=4f;
     public float Time2Spawn=2f;
     public controls doSpawn;
@@ -29,12 +29,18 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        switch (0)
+        Vector3 v;
+        
+        switch (Random.Range(0,2))
          {
-             case 0:
+            case 0:
                 float r = Random.Range(-7.5f,7.5f);
-                Vector3 v= new Vector3(r,3f,390);
+                v= new Vector3(r,3f,390);
                 Instantiate(simpleCube,v,Quaternion.identity);
+                break;
+            case 1:
+                v= new Vector3(0,3f,390);
+                Instantiate(fullCuboid,v,Quaternion.identity);
                 break;
 
          }
