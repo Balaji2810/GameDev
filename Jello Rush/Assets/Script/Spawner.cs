@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject simpleCube,fullCuboid,smartcube,smartjumpcube;
-    public float TimeBetweenWaves=6f;
+    public float TimeBetweenWaves=8f;
     public float Time2Spawn=2f;
     public controls doSpawn;
     public Transform player;

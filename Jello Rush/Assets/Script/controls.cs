@@ -19,6 +19,10 @@ public class controls : MonoBehaviour
     public bool spawner=true;
     public GameObject EndGameObject;
     public GameObject EndGame;
+    public float animationTime = 1.0f;
+    public iTween.EaseType easetype;
+    public iTween.EaseType jumpeasetype;
+    public float distance=3.5f,jumpdistance=3.5f;
     
     // Use this for initialization
     private void Start()
@@ -80,7 +84,15 @@ public class controls : MonoBehaviour
                         tx=touch.position.x-x;
                         movepercent=30*(tx/Screen.width);
                         //rb.transform.position.x=(movepercent*20)+objx;
-                        transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
+                        
+                        //transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
+                        Vector3 v = new Vector3(objx+movepercent,player.position.y,player.position.z);
+                        iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", animationTime, "easetype", "easeOutSine"));
+                        
+
+
+
+                        
 
                         break;
 
@@ -93,6 +105,25 @@ public class controls : MonoBehaviour
 
             }
 
+            //testing
+            if(Input.GetKey("q"))
+            {
+                iTween.MoveTo(this.gameObject, iTween.Hash("x", transform.position.x+ distance, "time", animationTime, "easetype", "easeOutSine"));
+
+            }
+            if(Input.GetKey("e"))
+            {
+                iTween.MoveTo(this.gameObject, iTween.Hash("x", transform.position.x-distance, "time", animationTime, "easetype", "easeOutSine"));
+
+            }
+
+            if(Input.GetKey("w"))
+            {
+                iTween.MoveTo(this.gameObject, iTween.Hash("y",  jumpdistance, "time", animationTime, "easetype", "jumpeaseOutSine"));
+
+            }
+
+            
             //move left right
             if(Input.GetKey("d"))
             {
