@@ -5,7 +5,7 @@ using System;
 
 public class SmartJumpCube : MonoBehaviour
 {
-    private float moveSpeed = 40f;
+    private float moveSpeed = 50f;
     public GameObject go;
     private GameObject player; 
     //public controls stopMove;

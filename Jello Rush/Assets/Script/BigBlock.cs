@@ -41,6 +41,17 @@ public class BigBlock : MonoBehaviour
             //print(colInfo.collider.name);
         }
 
+        else if(colInfo.collider.name=="simpleCuboid(Clone)" && StopScore.Spawner )
+        {
+            score.addScore(2);
+            //print(colInfo.collider.name);
+        }
+        else if(colInfo.collider.name=="smallpathCube(Clone)" && StopScore.Spawner )
+        {
+            score.addScore(4);
+            //print(colInfo.collider.name);
+        }
+
         
     }
 }

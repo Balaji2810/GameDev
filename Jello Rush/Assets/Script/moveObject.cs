@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class moveObject : MonoBehaviour
 {
-    private float moveSpeed = 40f;
+    private float moveSpeed = 50f;
     public GameObject go;
     //public controls stopMove;
     // Start is called before the first frame update

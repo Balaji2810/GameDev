@@ -809,7 +809,7 @@ MonoBehaviour:
   EndGameObject: {fileID: 2585880891315721715, guid: b5cb1786a7d6e7744b17580adbe51339,
     type: 3}
   EndGame: {fileID: 1938707735}
-  animationTime: 0.005
+  animationTime: 0
   easetype: 12
   jumpeasetype: 10
   distance: 1
@@ -1072,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeRed
       objectReference: {fileID: 0}
+    - target: {fileID: 128702, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 190398, guid: 13671976ac05ae34ebf3e2a2eb9da927, type: 3}
       propertyPath: m_Name
       value: player
@@ -1322,7 +1326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994254513}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccc1bf84cbd1cc54d8be9235f812f4cc, type: 3}
   m_Name: 
@@ -1334,6 +1338,10 @@ MonoBehaviour:
   smartcube: {fileID: 6022002954642935901, guid: fbcfc9908fb2a1b47aa185b88f0ac345,
     type: 3}
   smartjumpcube: {fileID: 8653978162859539629, guid: 333692c974d9bfa4fba2a39b33269917,
+    type: 3}
+  simpleCuboid: {fileID: 7777647814236299302, guid: 0811164a151d0cb49b2e0e060173bf30,
+    type: 3}
+  smallpathCube: {fileID: 5384711972366860867, guid: 6bcaf65f872423f4ab4804eabb941719,
     type: 3}
   TimeBetweenWaves: 1
   Time2Spawn: 2

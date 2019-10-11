@@ -40,7 +40,7 @@ public class controls : MonoBehaviour
             if(swipeControl.SwipeUp && jumps>0)
             {
                 
-                rb.velocity=new Vector3(0,1,0)*120*(moveSpeed*0.016f);//Time.deltaTime;
+                rb.velocity=new Vector3(0,1,0)*130*(moveSpeed*0.016f);//Time.deltaTime;
                 //rb.AddForce(0,50*moveSpeed*Time.deltaTime,0,ForceMode.VelocityChange);
                 jumps--;
                 jumpRot=1;
@@ -58,7 +58,7 @@ public class controls : MonoBehaviour
                 //transform.position=new Vector3(transform.position.x,transform.position.y-0.03f,transform.position.z);
             }
 
-            if(jumpRot==1 && transform.position.y>7.9f)
+            if(jumpRot==1 && transform.position.y>8.2f)
             {
                 rb.velocity=new Vector3(0,-1,0)*100*(moveSpeed*0.016f);
             }
@@ -82,12 +82,12 @@ public class controls : MonoBehaviour
                     // Determine direction by comparing the current touch position with the initial one.
                     case TouchPhase.Moved:
                         tx=touch.position.x-x;
-                        movepercent=30*(tx/Screen.width);
+                        movepercent=17*(tx/Screen.width);
                         //rb.transform.position.x=(movepercent*20)+objx;
                         
-                        //transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
+                        transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
                         Vector3 v = new Vector3(objx+movepercent,player.position.y,player.position.z);
-                        iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", animationTime, "easetype", "easeOutSine"));
+                        //iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", animationTime, "easetype", "easeOutSine"));
                         
 
 
@@ -222,7 +222,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x-(1f/2),transform.position.y-(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -230,7 +230,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x+(1f/2),transform.position.y-(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -238,7 +238,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x+(1f/2),transform.position.y+(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
         
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -246,7 +246,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x-(1f/2),transform.position.y+(1f),transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
         
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -254,7 +254,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x+(1f/2),transform.position.y,transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -262,7 +262,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x-(1f/2),transform.position.y,transform.position.z-0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
 
         //z+1 axis
@@ -272,7 +272,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x-(1f/2),transform.position.y-(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -280,7 +280,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x+(1f/2),transform.position.y-(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -288,7 +288,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x+(1f/2),transform.position.y+(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
         
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -296,7 +296,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x-(1f/2),transform.position.y+(1f),transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
         
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -304,7 +304,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x+(1f/2),transform.position.y,transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         x=Random.Range(-0.5f,0.5f);
         y=Random.Range(0.1f,0.5f);
@@ -312,7 +312,7 @@ public class controls : MonoBehaviour
         v= new Vector3(transform.position.x-(1f/2),transform.position.y,transform.position.z+0.5f);
         egobj=Instantiate(EndGameObject,v,Quaternion.identity);
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
-        print(x+" "+y+" "+z);
+        //print(x+" "+y+" "+z);
 
         
 
