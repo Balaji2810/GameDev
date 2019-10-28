@@ -63,47 +63,7 @@ public class controls : MonoBehaviour
                 rb.velocity=new Vector3(0,-1,0)*100*(moveSpeed*0.016f);
             }
             
-            //move left right
-            if(Input.touchCount>0)
-            {
-                Touch touch = Input.GetTouch(0);
-
-                // Handle finger movements based on touch phase.
-                switch (touch.phase)
-                {
-                    // Record initial touch position.
-                    case TouchPhase.Began:
-                        x=touch.position.x;
-                        objx=player.position.x;
-
-
-                        break;
-
-                    // Determine direction by comparing the current touch position with the initial one.
-                    case TouchPhase.Moved:
-                        tx=touch.position.x-x;
-                        movepercent=17*(tx/Screen.width);
-                        //rb.transform.position.x=(movepercent*20)+objx;
-                        
-                        transform.position= new Vector3(objx+movepercent,player.position.y,player.position.z);
-                        Vector3 v = new Vector3(objx+movepercent,player.position.y,player.position.z);
-                        //iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", animationTime, "easetype", "easeOutSine"));
-                        
-
-
-
-                        
-
-                        break;
-
-                    // Report that a direction has been chosen when the finger is lifted.
-                    case TouchPhase.Ended:
-                        print("Touch end");
-                        break;
-                }
-
-
-            }
+            
 
             //testing
             if(Input.GetKey("q"))
@@ -150,6 +110,54 @@ public class controls : MonoBehaviour
         }
 
     }
+
+    private void FixedUpdate()
+    {
+        //move left right
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Handle finger movements based on touch phase.
+            switch (touch.phase)
+            {
+                // Record initial touch position.
+                case TouchPhase.Began:
+                    x = touch.position.x - transform.position.x;
+                    objx = player.position.x;
+
+
+                    break;
+
+                // Determine direction by comparing the current touch position with the initial one.
+                case TouchPhase.Moved:
+                    tx = touch.position.x - x;
+                    movepercent = 20 * (tx / Screen.width);
+
+                    //type 1
+                    //rb.transform.position.x=(movepercent*20)+objx;
+
+                    //type 2
+                    transform.position = new Vector3(objx + movepercent, player.position.y, player.position.z);
+
+                    //type 3
+                    //Vector3 v = new Vector3(objx+movepercent,player.position.y,player.position.z);
+                    //iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", animationTime, "easetype", "easeOutSine"));
+
+                    //rb.MovePosition(new Vector2(touchPosition.x - x, 0));
+
+                    break;
+
+                // Report that a direction has been chosen when the finger is lifted.
+                case TouchPhase.Ended:
+                    print("Touch end");
+                    //rb.velocity = Vector3.zero;
+                    break;
+            }
+
+
+        }
+    }
     /*
     private void FixedUpdate()
 	{
@@ -176,7 +184,7 @@ public class controls : MonoBehaviour
 		}
 	}
     */
-        
+
     void OnCollisionEnter(Collision colInfo)
     {
         if(colInfo.collider.name=="Base")
@@ -314,10 +322,111 @@ public class controls : MonoBehaviour
         egobj.GetComponent<Rigidbody>().velocity =new Vector3(x*blastForce,y*blastForce,z*blastForce);
         //print(x+" "+y+" "+z);
 
-        
+
+
+        //z-1 axis
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x - (1f / 2), transform.position.y - (1f), transform.position.z - 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x + (1f / 2), transform.position.y - (1f), transform.position.z - 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x + (1f / 2), transform.position.y + (1f), transform.position.z - 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x - (1f / 2), transform.position.y + (1f), transform.position.z - 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x + (1f / 2), transform.position.y, transform.position.z - 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x - (1f / 2), transform.position.y, transform.position.z - 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+
+        //z+1 axis
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x - (1f / 2), transform.position.y - (1f), transform.position.z + 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x + (1f / 2), transform.position.y - (1f), transform.position.z + 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x + (1f / 2), transform.position.y + (1f), transform.position.z + 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x - (1f / 2), transform.position.y + (1f), transform.position.z + 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x + (1f / 2), transform.position.y, transform.position.z + 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+        x = Random.Range(-0.5f, 0.5f);
+        y = Random.Range(0.1f, 0.5f);
+        z = Random.Range(-2f, 2f);
+        v = new Vector3(transform.position.x - (1f / 2), transform.position.y, transform.position.z + 0.5f);
+        egobj = Instantiate(EndGameObject, v, Quaternion.identity);
+        egobj.GetComponent<Rigidbody>().velocity = new Vector3(x * blastForce, y * blastForce, z * blastForce);
+        //print(x+" "+y+" "+z);
+
+
 
     }
-        
+
     public bool Spawner{get{return spawner;}}
     
 }
