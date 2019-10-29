@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
 
     public Text score;
     private String ConnectionString;
+    private String sqlquerry;
 
     public void Start()
     {
@@ -18,20 +19,23 @@ public class Score : MonoBehaviour
 
     public void ResetScore()
     {
-        score.text="0";
+        //score.text="0";
+        SetScore(-1);
         
 
     }
 
     public void addScore(int x)
     {
-        score.text=(long.Parse(score.text)+x).ToString();
+        //score.text=(long.Parse(score.text)+x).ToString();
       
-        setScore(1);
+        SetScore(x);
         
     }
 
-    public void setScore(int x)
+
+    //DB connections
+    public void SetScore(int x)
     {
         using (IDbConnection Dbconn = new SqliteConnection(ConnectionString))
         {
@@ -39,22 +43,61 @@ public class Score : MonoBehaviour
 
             using (IDbCommand DbCmd = Dbconn.CreateCommand())
             {
-                String sqlquerry = "select * from data";
 
+                if (x > 0)
+                {
+                    sqlquerry = "select * from data";
+                    DbCmd.CommandText = sqlquerry;
+                    
+                    using (IDataReader reader1 = DbCmd.ExecuteReader())
+                    {
+                        int temp = -1;
+                        while (reader1.Read())
+                        {
+                            temp=reader1.GetInt32(3);
+                            print(reader1.GetInt32(0));
+                            
+
+                        }
+
+                        reader1.Close();
+                        sqlquerry = "update data set temp=" + (temp + x) ;
+                        print(sqlquerry);
+                        print(DbCmd.ExecuteNonQuery());
+                        temp = -1;
+
+                    }
+
+                }
+                else
+                {
+                    sqlquerry = "update data set temp=0";
+                    DbCmd.ExecuteNonQuery();
+
+
+                }
+                
+                
+                
+                //set score
+                sqlquerry = "select * from data";
                 DbCmd.CommandText = sqlquerry;
-
                 using (IDataReader reader = DbCmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Debug.Log(reader.GetInt32(0));
+                        Debug.Log(reader.GetInt32(3)+" check");
+                        score.text = (reader.GetInt32(3)).ToString();
+
                     }
 
                     reader.Close();
-                    Dbconn.Close();
+                    
                 }
 
             }
+
+            Dbconn.Close();
         }
     }
     

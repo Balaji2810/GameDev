@@ -29,6 +29,8 @@ public class controls : MonoBehaviour
     {
        //print(Screen.width);
        spawner=true;
+        jumpForce = jumpForce;
+        jumpAllowed = jumpAllowed;
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class controls : MonoBehaviour
             
 
             //testing
+            /*
             if(Input.GetKey("q"))
             {
                 iTween.MoveTo(this.gameObject, iTween.Hash("x", transform.position.x+ distance, "time", animationTime, "easetype", "easeOutSine"));
@@ -82,6 +85,7 @@ public class controls : MonoBehaviour
                 iTween.MoveTo(this.gameObject, iTween.Hash("y",  jumpdistance, "time", animationTime, "easetype", "jumpeaseOutSine"));
 
             }
+            */
 
             
             //move left right
@@ -132,7 +136,7 @@ public class controls : MonoBehaviour
                 // Determine direction by comparing the current touch position with the initial one.
                 case TouchPhase.Moved:
                     tx = touch.position.x - x;
-                    movepercent = 20 * (tx / Screen.width);
+                    movepercent = 10 * (tx / Screen.width);
 
                     //type 1
                     //rb.transform.position.x=(movepercent*20)+objx;

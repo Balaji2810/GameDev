@@ -37,7 +37,7 @@ public class SmartJumpCube : MonoBehaviour
                 }
                 catch(Exception e) 
                 {
-                    ;
+                    print(e);
                 }
             }
             //print(player.GetComponent<controls>().Spawner);
