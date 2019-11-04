@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleVersion: 1.0
+  bundleVersion: 1.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -156,7 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.appitto.jellycube
+    Android: com.appitto.jellorush
     Standalone: unity.TropicBlocks.JellyCube
     Tizen: com.tropicblocks.jellycube
     iOS: com.tropicblocks.jellycube

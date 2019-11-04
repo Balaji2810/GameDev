@@ -8,15 +8,30 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
 
     public Score score;
+    public controls GameEnd;
+    public GameObject EndGameUI;
 
+    public void Start()
+    {
+        // score.ResetScore();
+        
+    }
     public void Restart()
     {
+        score.ResetScore();
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // StartCoroutine(Example());
+        //score.SetScore(1000);
+        StartCoroutine(Example());
        // score.addScore(1000);
 
     }
+    public void GameOver()
+    {
 
+        EndGameUI.SetActive(true);
+
+    }
 
     IEnumerator Example()
     {

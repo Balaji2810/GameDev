@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using System;
 using System.Data;
 using Mono.Data.Sqlite;
@@ -14,7 +15,8 @@ public class Score : MonoBehaviour
 
     public void Start()
     {
-        ConnectionString = "URI=file:" + Application.dataPath + "/Plugins/sql.db";
+        ConnectionString = "URI=file:" + Application.dataPath + "/Plugins/database.s3db";
+        ResetScore();
     }
 
     public void ResetScore()
@@ -22,6 +24,7 @@ public class Score : MonoBehaviour
         //score.text="0";
         SetScore(-1);
         
+
 
     }
 
@@ -37,68 +40,22 @@ public class Score : MonoBehaviour
     //DB connections
     public void SetScore(int x)
     {
-        using (IDbConnection Dbconn = new SqliteConnection(ConnectionString))
+        if (x == -1)
         {
-            Dbconn.Open();
+            ES2.Save(0, "file.dump?encrypt=true&encryptiontype=obfuscate&password=pass1&tag=score");
 
-            using (IDbCommand DbCmd = Dbconn.CreateCommand())
-            {
-
-                if (x > 0)
-                {
-                    sqlquerry = "select * from data";
-                    DbCmd.CommandText = sqlquerry;
-                    
-                    using (IDataReader reader1 = DbCmd.ExecuteReader())
-                    {
-                        int temp = -1;
-                        while (reader1.Read())
-                        {
-                            temp=reader1.GetInt32(3);
-                            print(reader1.GetInt32(0));
-                            
-
-                        }
-
-                        reader1.Close();
-                        sqlquerry = "update data set temp=" + (temp + x) ;
-                        print(sqlquerry);
-                        print(DbCmd.ExecuteNonQuery());
-                        temp = -1;
-
-                    }
-
-                }
-                else
-                {
-                    sqlquerry = "update data set temp=0";
-                    DbCmd.ExecuteNonQuery();
-
-
-                }
-                
-                
-                
-                //set score
-                sqlquerry = "select * from data";
-                DbCmd.CommandText = sqlquerry;
-                using (IDataReader reader = DbCmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Debug.Log(reader.GetInt32(3)+" check");
-                        score.text = (reader.GetInt32(3)).ToString();
-
-                    }
-
-                    reader.Close();
-                    
-                }
-
-            }
-
-            Dbconn.Close();
+            
         }
+        else 
+        {
+            int temp=-1;
+            temp = ES2.Load<int>("file.dump?encrypt=true&encryptiontype=obfuscate&password=pass1&tag=score");
+            ES2.Save(temp+x, "file.dump?encrypt=true&encryptiontype=obfuscate&password=pass1&tag=score");
+            temp = 1;
+
+        }
+
+        score.text= (ES2.Load<int>("file.dump?encrypt=true&encryptiontype=obfuscate&password=pass1&tag=score")).ToString();
     }
     
 }

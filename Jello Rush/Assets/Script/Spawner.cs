@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
         switch (Random.Range(0,5))
          {
             case 0:
-                r = Random.Range(-9f,9f);
+                r = Random.Range(-8f,8.00000000000000001f);
                 v= new Vector3(r,3f,390);
                 Instantiate(simpleCube,v,Quaternion.identity);
                 break;
@@ -50,21 +50,21 @@ public class Spawner : MonoBehaviour
                 Instantiate(smartcube,v,Quaternion.identity);
                 break;
             case 3:
-                r = Random.Range(-9f,9f);
-                v= new Vector3(r,3f,390);
+                r = Random.Range(-8f, 8.00000000000000001f);
+                v = new Vector3(r,3f,390);
                 Instantiate(smartjumpcube,v,Quaternion.identity);
                 break;
             case 4:
                 if(Random.Range(0,2)==1)
                 {
-                    r = Random.Range(-9f,9f);
-                    v= new Vector3(r,3f,390);
+                    r = Random.Range(-8f, 8.00000000000000001f);
+                    v = new Vector3(r,3f,390);
                     t=Instantiate(simpleCuboid,v,Quaternion.identity);
                     t.transform.rotation =  Quaternion.Euler(0, 0, 90);
                 }
                 else
                 {
-                    r = Random.Range(-7f,7f);
+                    r = Random.Range(-6f,6.0000000000000000001f);
                     v= new Vector3(r,3f,390);
                     t=Instantiate(simpleCuboid,v,Quaternion.identity);
                     t.transform.rotation =  Quaternion.Euler(90, 0, 0);

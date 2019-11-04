@@ -7,6 +7,7 @@ public class controls : MonoBehaviour
 {
     private Vector3 touchPosition;
     public Rigidbody rb;
+    public GameManager gameManager;
     private Vector3 direction;
     private float moveSpeed = 10f;
     private float x,objx,tx,movepercent;
@@ -31,23 +32,25 @@ public class controls : MonoBehaviour
        spawner=true;
         jumpForce = jumpForce;
         jumpAllowed = jumpAllowed;
+        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if(spawner)
+        if (spawner)
         {
             //jump
             if(swipeControl.SwipeUp && jumps>0)
             {
                 
-                rb.velocity=new Vector3(0,1,0)*130*(moveSpeed*0.016f);//Time.deltaTime;
-                //rb.AddForce(0,50*moveSpeed*Time.deltaTime,0,ForceMode.VelocityChange);
+                rb.velocity=new Vector3(0,1,0)*130*(moveSpeed*0.016f);
                 jumps--;
                 jumpRot=1;
-                //print("movespeed:"+moveSpeed+" Time.deltaTime:"+Time.deltaTime);
 
+
+               
+               
             }
 
             //jump Rotation
@@ -55,9 +58,7 @@ public class controls : MonoBehaviour
             if(jumpRot==1 && transform.position.y>2)
             {
                 transform.Rotate(0,700*Time.deltaTime,0);
-                //print(transform.position.y);
                 
-                //transform.position=new Vector3(transform.position.x,transform.position.y-0.03f,transform.position.z);
             }
 
             if(jumpRot==1 && transform.position.y>8.2f)
@@ -67,42 +68,23 @@ public class controls : MonoBehaviour
             
             
 
-            //testing
-            /*
-            if(Input.GetKey("q"))
-            {
-                iTween.MoveTo(this.gameObject, iTween.Hash("x", transform.position.x+ distance, "time", animationTime, "easetype", "easeOutSine"));
-
-            }
-            if(Input.GetKey("e"))
-            {
-                iTween.MoveTo(this.gameObject, iTween.Hash("x", transform.position.x-distance, "time", animationTime, "easetype", "easeOutSine"));
-
-            }
-
-            if(Input.GetKey("w"))
-            {
-                iTween.MoveTo(this.gameObject, iTween.Hash("y",  jumpdistance, "time", animationTime, "easetype", "jumpeaseOutSine"));
-
-            }
-            */
+           
 
             
             //move left right
             if(Input.GetKey("d"))
             {
-                //rb.velocity=new Vector3(1,0,0)*80*moveSpeed*Time.deltaTime;
+                
                 transform.position=new Vector3(transform.position.x+(15f*Time.deltaTime),transform.position.y,transform.position.z);
 
             }
 
             if(Input.GetKey("a"))
-            {   //rb.velocity=new Vector3(-1,0,0)*80*moveSpeed*Time.deltaTime;
-                //rb.AddForce(-moveSpeed*Time.deltaTime,0,0,ForceMode.VelocityChange);
+            {   
                 transform.position=new Vector3(transform.position.x-(15f*Time.deltaTime),transform.position.y,transform.position.z);
             }
 
-            // SwipeCheck ();	
+            
 
 
             //endgame
@@ -127,7 +109,7 @@ public class controls : MonoBehaviour
             {
                 // Record initial touch position.
                 case TouchPhase.Began:
-                    x = touch.position.x - transform.position.x;
+                    x = touch.position.x;
                     objx = player.position.x;
 
 
@@ -136,25 +118,26 @@ public class controls : MonoBehaviour
                 // Determine direction by comparing the current touch position with the initial one.
                 case TouchPhase.Moved:
                     tx = touch.position.x - x;
-                    movepercent = 10 * (tx / Screen.width);
+                    movepercent = 20 * (tx / Screen.width);
 
-                    //type 1
-                    //rb.transform.position.x=(movepercent*20)+objx;
-
-                    //type 2
-                    transform.position = new Vector3(objx + movepercent, player.position.y, player.position.z);
+                   //type2 
+                   // transform.position = new Vector3(objx + movepercent, player.position.y, player.position.z);
 
                     //type 3
-                    //Vector3 v = new Vector3(objx+movepercent,player.position.y,player.position.z);
-                    //iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", animationTime, "easetype", "easeOutSine"));
+                    Vector3 v = new Vector3(objx+movepercent,player.position.y,player.position.z);
+                    //iTween.MoveTo(this.gameObject, iTween.Hash("x", objx+movepercent, "time", 0, "easetype", "easeOutSine"));
 
-                    //rb.MovePosition(new Vector2(touchPosition.x - x, 0));
+                    //type 4
+                    //rb.MovePosition(new Vector2(objx+movepercent, 0));
+
+                    //type 5
+                    transform.position = Vector3.MoveTowards(transform.position, v, 8);
 
                     break;
 
                 // Report that a direction has been chosen when the finger is lifted.
                 case TouchPhase.Ended:
-                    print("Touch end");
+                    //print("Touch end");
                     //rb.velocity = Vector3.zero;
                     break;
             }
@@ -162,32 +145,7 @@ public class controls : MonoBehaviour
 
         }
     }
-    /*
-    private void FixedUpdate()
-	{
-		JumpIfAllowed ();
-	}
-
-	private void SwipeCheck()
-	{
-		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began)
-			startTouchPosition = Input.GetTouch (0).position;
-
-		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) {
-			endTouchPosition = Input.GetTouch (0).position;
-			if (endTouchPosition.y > startTouchPosition.y && rb.velocity.y == 0)
-				jumpAllowed = true;
-		}
-	}
-
-	private void JumpIfAllowed()
-	{
-		if (jumpAllowed) {
-			rb.AddForce (Vector2.up * jumpForce*Time.deltaTime*3);
-			jumpAllowed = false;
-		}
-	}
-    */
+    
 
     void OnCollisionEnter(Collision colInfo)
     {
@@ -195,7 +153,7 @@ public class controls : MonoBehaviour
         {
             jumps=1;
             jumpRot=0;
-            //transform.Rotate(0,90,0);
+            
             if(1==(jumpcount^1))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
@@ -220,7 +178,7 @@ public class controls : MonoBehaviour
     void endGame()
     {
         spawner=false;
-        
+        gameManager.GameOver();
         GameObject egobj;
         float blastForce=15f;
         float x,y,z;
