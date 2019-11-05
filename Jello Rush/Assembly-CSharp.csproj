@@ -94,6 +94,7 @@
     <Compile Include="Assets\JellyCube\Scripts\Tweener.cs" />
     <Compile Include="Assets\Script\BigBlock.cs" />
     <Compile Include="Assets\Script\camera_move.cs" />
+    <Compile Include="Assets\Script\changecolor.cs" />
     <Compile Include="Assets\Script\controls.cs" />
     <Compile Include="Assets\Script\GameData.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject simpleCube,fullCuboid,smartcube,smartjumpcube,simpleCuboid,smallpathCube;
+    public GameObject simpleCube,fullCuboid,smartcube,smartjumpcube,simpleCuboid,smallpathCube,smallwallCube;
     public float TimeBetweenWaves=10f;
     public float Time2Spawn=2f;
     public controls doSpawn;
@@ -32,12 +32,12 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         Vector3 v;
-        float r;
+        float r,x,r1,r2;
         GameObject t;
-        switch (Random.Range(0,5))
+        switch (Random.Range(0,7))
          {
             case 0:
-                r = Random.Range(-8f,8.00000000000000001f);
+                r = Random.Range(-8f,8f);
                 v= new Vector3(r,3f,390);
                 Instantiate(simpleCube,v,Quaternion.identity);
                 break;
@@ -50,21 +50,21 @@ public class Spawner : MonoBehaviour
                 Instantiate(smartcube,v,Quaternion.identity);
                 break;
             case 3:
-                r = Random.Range(-8f, 8.00000000000000001f);
+                r = Random.Range(-8f, 8f);
                 v = new Vector3(r,3f,390);
                 Instantiate(smartjumpcube,v,Quaternion.identity);
                 break;
             case 4:
                 if(Random.Range(0,2)==1)
                 {
-                    r = Random.Range(-8f, 8.00000000000000001f);
+                    r = Random.Range(-8f, 8f);
                     v = new Vector3(r,3f,390);
                     t=Instantiate(simpleCuboid,v,Quaternion.identity);
                     t.transform.rotation =  Quaternion.Euler(0, 0, 90);
                 }
                 else
                 {
-                    r = Random.Range(-6f,6.0000000000000000001f);
+                    r = Random.Range(-6f,6f);
                     v= new Vector3(r,3f,390);
                     t=Instantiate(simpleCuboid,v,Quaternion.identity);
                     t.transform.rotation =  Quaternion.Euler(90, 0, 0);
@@ -72,23 +72,85 @@ public class Spawner : MonoBehaviour
                 
                 break;
             case 5:
-                r = Random.Range(2.0f,18.0f);
-                
+                r = Random.Range(-6,7);
+                x = 1f;
+                r1 = r - x;
+                r2 = r + x;
 
-
-                v= new Vector3(((0+r)/2)-10,3f,390);
+                v= new Vector3((-10+r1)/2,3f,390);
                 t=Instantiate(smallpathCube,v,Quaternion.identity);
-                t.transform.localScale=new Vector3(r,8,2);
+                t.transform.localScale=new Vector3(Mathf.Abs(-10-r1),8.5f,2);
 
-                v= new Vector3(((r+1.9f+20)/2)-10,3f,390);
-                t=Instantiate(smallpathCube,v,Quaternion.identity);
-                t.transform.localScale=new Vector3(20-(r+1.9f),8,2);
+                v= new Vector3(((r2+10)/2),3f,390);
+                t =Instantiate(smallpathCube,v,Quaternion.identity);
+                t.transform.localScale=new Vector3(Mathf.Abs(10 - r2), 8.5f, 2);
+                break;
+
+            case 6:
+
+                if (Random.Range(0, 2) == 1)
+                {
+                    r = 0;
+                    x = 0f;
+                    r1 = r - x;
+                    r2 = r + x;
+                    v = new Vector3((-10 + r1) / 2, 3f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(-10 - r1), 4f, 2);
+
+                    v = new Vector3(((r2 + 10) / 2), 3f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(10 - r2), 4f, 2);
+
+                    r = Random.Range(-6, 7);
+                    x = 2f;
+                    r1 = r - x;
+                    r2 = r + x;
+
+                    v = new Vector3((-10 + r1) / 2, 7f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(-10 - r1), 4.5f, 2);
+
+                    v = new Vector3(((r2 + 10) / 2), 7f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(10 - r2), 4.5f, 2);
+                }
+                else 
+                {
+                    r = 0;
+                    x = 2f;
+                    r1 = r - x;
+                    r2 = r + x;
+                    v = new Vector3((-10 + r1) / 2, 3f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(-10 - r1), 4f, 2);
+
+                    v = new Vector3(((r2 + 10) / 2), 3f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(10 - r2), 4f, 2);
+
+                    r = Random.Range(-6, 7);
+                    x = 0f;
+                    r1 = r - x;
+                    r2 = r + x;
+
+                    v = new Vector3((-10 + r1) / 2, 7f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(-10 - r1), 4.5f, 2);
+
+                    v = new Vector3(((r2 + 10) / 2), 7f, 390);
+                    t = Instantiate(smallpathCube, v, Quaternion.identity);
+                    t.transform.localScale = new Vector3(Mathf.Abs(10 - r2), 4.5f, 2);
+                }
+
+
+
                 break;
 
 
-            
 
-         }
+
+        }
     }
 
     

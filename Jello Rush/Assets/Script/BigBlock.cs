@@ -20,38 +20,41 @@ public class BigBlock : MonoBehaviour
 
     void OnCollisionEnter(Collision colInfo)
     {
-        if(colInfo.collider.name=="simple cube(Clone)" && StopScore.Spawner )
+        if (colInfo.collider.name == "simple cube(Clone)" && StopScore.Spawner)
         {
             score.addScore(1);
             //print(colInfo.collider.name);
         }
-        else if(colInfo.collider.name=="FullCuboid(Clone)" && StopScore.Spawner )
+        else if (colInfo.collider.name == "FullCuboid(Clone)" && StopScore.Spawner)
         {
             score.addScore(2);
             //print(colInfo.collider.name);
         }
-        else if(colInfo.collider.name=="SmartCube(Clone)" && StopScore.Spawner )
+        else if (colInfo.collider.name == "SmartCube(Clone)" && StopScore.Spawner)
         {
-            score.addScore(3);
+            score.addScore(4);
             //print(colInfo.collider.name);
         }
-        else if(colInfo.collider.name=="SmartJumpCube(Clone)" && StopScore.Spawner )
-        {
-            score.addScore(3);
-            //print(colInfo.collider.name);
-        }
-
-        else if(colInfo.collider.name=="simpleCuboid(Clone)" && StopScore.Spawner )
-        {
-            score.addScore(2);
-            //print(colInfo.collider.name);
-        }
-        else if(colInfo.collider.name=="smallpathCube(Clone)" && StopScore.Spawner )
+        else if (colInfo.collider.name == "SmartJumpCube(Clone)" && StopScore.Spawner)
         {
             score.addScore(4);
             //print(colInfo.collider.name);
         }
 
+        else if (colInfo.collider.name == "simpleCuboid(Clone)" && StopScore.Spawner)
+        {
+            score.addScore(2);
+            //print(colInfo.collider.name);
+        }
+        else if (colInfo.collider.name == "smallpathCube(Clone)" && StopScore.Spawner)
+        {
+            score.addScore(3);
+            //print(colInfo.collider.name);
+        }
+        else if ((colInfo.collider.name == "smallwallCube(Clone)" && StopScore.Spawner))
+        {
+            score.addScore(2);
+        }
         
     }
 }

@@ -44,7 +44,7 @@ public class controls : MonoBehaviour
             if(swipeControl.SwipeUp && jumps>0)
             {
                 
-                rb.velocity=new Vector3(0,1,0)*130*(moveSpeed*0.016f);
+                rb.velocity=new Vector3(0,1,0)*190*(moveSpeed*0.016f);
                 jumps--;
                 jumpRot=1;
 
@@ -61,9 +61,9 @@ public class controls : MonoBehaviour
                 
             }
 
-            if(jumpRot==1 && transform.position.y>8.2f)
+            if(jumpRot==1 && transform.position.y>8.5f)
             {
-                rb.velocity=new Vector3(0,-1,0)*100*(moveSpeed*0.016f);
+                rb.velocity=new Vector3(0,-1,0)*90*(moveSpeed*0.016f);
             }
             
             
@@ -131,7 +131,7 @@ public class controls : MonoBehaviour
                     //rb.MovePosition(new Vector2(objx+movepercent, 0));
 
                     //type 5
-                    transform.position = Vector3.MoveTowards(transform.position, v, 8);
+                    transform.position = Vector3.MoveTowards(transform.position, v, 5);
 
                     break;
 
@@ -149,12 +149,12 @@ public class controls : MonoBehaviour
 
     void OnCollisionEnter(Collision colInfo)
     {
-        if(colInfo.collider.name=="Base")
+        if (colInfo.collider.name == "Base")
         {
-            jumps=1;
-            jumpRot=0;
-            
-            if(1==(jumpcount^1))
+            jumps = 1;
+            jumpRot = 0;
+
+            if (1 == (jumpcount ^ 1))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
             }
@@ -162,16 +162,32 @@ public class controls : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            jumpcount=jumpcount^1;
+            jumpcount = jumpcount ^ 1;
+        }
+        else if (colInfo.collider.name == "SideLeft" || colInfo.collider.name == "SideRight")
+        {
+
+            jumps = 1;
+            jumpRot = 0;
+
+            if (1 == (jumpcount ^ 1))
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            jumpcount = jumpcount ^ 1;
+
+
+
         }
         else
         {
-            
-           
-            
-             endGame();
-            
+            endGame();
         }
+
 
     }
 

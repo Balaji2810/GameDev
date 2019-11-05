@@ -30,10 +30,23 @@ public class SmartCube : MonoBehaviour
             go.GetComponent<Rigidbody>().velocity=new Vector3(0,0,-1)*100*moveSpeed*Time.deltaTime;
             //if(player.GetComponent<controls>().Spawner)
             {
-                
-                try 
+
+                try
                 {
-                    go.transform.position=new Vector3(player.transform.position.x,go.transform.position.y,go.transform.position.z);
+                    Vector3 v = new Vector3(player.transform.position.x, go.transform.position.y, go.transform.position.z);
+                    if (v.x > -8f && v.x < 8f)
+                    {
+                        go.transform.position = v;
+                    }
+                     if (v.x > 8f)
+                    {
+                        go.transform.position = new Vector3(8, go.transform.position.y, go.transform.position.z);
+                    }
+                    if (v.x < -8f)
+                    {
+                        go.transform.position = new Vector3(-8, go.transform.position.y, go.transform.position.z);
+                    }
+                    
                 }
                 catch(Exception e) 
                 {
